@@ -1,3 +1,5 @@
+export 'package:neivor_tecnico/screens/qr_screen.dart';
+
 export 'package:neivor_tecnico/screens/invitados.dart';
 
 export 'package:neivor_tecnico/screens/detalle_visita.dart';

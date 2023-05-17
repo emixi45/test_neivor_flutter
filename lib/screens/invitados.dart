@@ -46,6 +46,7 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
     super.initState();
   }
 
+  late bool _visitaVariosDias = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +77,11 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
                   children: [
                     SizedBox(
                         width: MediaQuery.of(context).size.width * 0.3,
-                        child: const CountryCodePicker()),
+                        child: const CountryCodePicker(
+                          initialSelection: 'Ar',
+                          showCountryOnly: false,
+                          showOnlyCountryWhenClosed: false,
+                        )),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: _CustomListTile(
@@ -88,10 +93,28 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
                   ],
                 ),
               ),
-              _CustomListTile(
-                type: TextInputType.datetime,
-                formItem: appFormItems[2],
-                formControl: formControl[2],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Visita de varios dias',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Switch(
+                      value: _visitaVariosDias,
+                      onChanged: (bool valueIn) {
+                        setState(() {
+                          _visitaVariosDias = valueIn;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
               _CustomListTile(
                   formItem: appFormItems[3], formControl: formControl[3]),
@@ -119,9 +142,10 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
                         backgroundColor: Colors.deepPurple),
                     onPressed: () {
                       context.push('/detalle_invitados');
+
                       _formKey.currentState?.validate();
                       print(
-                          '${formNombre.text},${formCelular.text},${formVisita.text},${formdias.text},${formInstrucciones.text}, ');
+                          '${formNombre.text},${formCelular.text},${_visitaVariosDias},${formdias.text},${formInstrucciones.text},');
                     },
                     child: const Text('continuar')),
               )
