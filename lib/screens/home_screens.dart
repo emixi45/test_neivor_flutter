@@ -151,48 +151,70 @@ class _CustomListTile extends StatelessWidget {
           trailing: const Icon(Icons.arrow_forward_ios),
           
           onTap: () {
-            showDialog(
+            showModalBottomSheet(
+              barrierColor: Colors.black45,
               
-              context: context, 
-              builder: (context) => Column(
-                
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  AlertDialog(
-                    
-                    alignment: Alignment.center,
-                    icon:const Icon(Icons.people),
-                    title: const Text('Sincroniza tus contactos'),
-                    content: const Text('permite el acceso para invitar a tu lista de amigos y familiares a tu condominio',textAlign: TextAlign.center,),
-                  actions: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+              
+              context: context, builder: (context) =>  Container(
+                height: 500,
+                color: Colors.white,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.people,size: 50),
+                      const  Padding(padding: EdgeInsets.only(bottom: 50)),
+
+                      const Padding(
+                        padding:  EdgeInsets.only(bottom: 10),
+                        child: Text('Sincroniza Tus contactos',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                        ),
+                      ),
+                      
+                      const Padding(
+                        padding:  EdgeInsets.only(bottom: 20),
+                        child:  Text('Permite el acceso para invitar a tus lista de amigos y familiares a tu condominio',
+                        textAlign: TextAlign.center,
+                        style:
+                        TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),),
+                      ),
+                      Column(
+                        
                         children: [
-                          
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              minimumSize: Size(300, 30),
-                              backgroundColor: Colors.deepPurple
+                              shape:RoundedRectangleBorder (
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                                  minimumSize: const  Size(350, 40),
+                                   backgroundColor: Colors.deepPurple[400]
                             ),
-                            onPressed: () =>context.push(menuItem.link) , child: Text('Permitir'),),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: Size(300, 30),
-                              backgroundColor: Colors.deepPurple
-                              
-                            ),
-                            onPressed: () {
-                      }, child: Text('Omitir')),
+                            child: const Text('Permitir'),
+                            onPressed: () => context.push(menuItem.link), ),
                         ],
                       ),
-                    ),
-                    
-                  ],
-                  ),
-                ],
-              )
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape:RoundedRectangleBorder (
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                              minimumSize: const  Size(350, 40),
+                               backgroundColor: Colors.deepPurple[00]
+                        ),
+                        child: const Text('Omitir'),
+                        onPressed: () => Navigator.pop(context), )
+                    ]
+                  )
+                )
+            )
             );
           },
           

@@ -1,21 +1,17 @@
 import 'package:go_router/go_router.dart';
 import 'package:neivor_tecnico/screens/screens.dart';
 
-
-
-
-final appRouter = GoRouter(
-  routes: [
-    GoRoute(
+final appRouter = GoRouter(routes: [
+  GoRoute(
       path: '/',
-      name:HomeScreen.name,
+      name: HomeScreen.name,
       builder: (context, state) => const HomeScreen()),
-    GoRoute(
-      path: '/invitadosScreen',
-      name:InvitadosScreen.name,
+  GoRoute(
+      path: '/invitados',
+      name: InvitadosScreen.name,
       builder: (context, state) => const InvitadosScreen()),
-    
-  ]
-  
-  
-  );
+  GoRoute(
+      path: '/detalle_invitados',
+      name: DetalleVisita.name,
+      builder: (context, state) => const DetalleVisita()),
+]);
