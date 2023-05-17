@@ -4,8 +4,9 @@ import 'package:neivor_tecnico/screens/widget/formularios/custom_appbar.dart';
 
 class DetalleVisita extends StatelessWidget {
   static const String name = 'detalle_visita';
+  final Map<String, dynamic>? resForm;
 
-  const DetalleVisita({super.key});
+  const DetalleVisita({super.key, this.resForm});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class DetalleVisita extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             child: Column(
               children: [
                 Row(
@@ -54,7 +55,7 @@ class DetalleVisita extends StatelessWidget {
                   children: [
                     Text('Nombre:',
                         style: TextStyle(fontWeight: FontWeight.w500)),
-                    Text('Claudia Morales',
+                    Text('${resForm?["name"]}',
                         style: TextStyle(fontWeight: FontWeight.w300)),
                   ],
                 ),
@@ -62,7 +63,7 @@ class DetalleVisita extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             child: Column(
               children: [
                 Row(
@@ -97,7 +98,7 @@ class DetalleVisita extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             child: Column(
               children: [
                 Row(
@@ -113,7 +114,7 @@ class DetalleVisita extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             child: Column(
               children: [
                 Column(
@@ -135,14 +136,14 @@ class DetalleVisita extends StatelessWidget {
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                 child: Text('Dia de entrada',
                     style: TextStyle(fontWeight: FontWeight.w500)),
               ),
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             child: Container(
               padding: EdgeInsets.only(left: 9, top: 16),
               child: Text('Instrucciones al personal',

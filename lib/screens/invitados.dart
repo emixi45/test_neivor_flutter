@@ -1,6 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:neivor_tecnico/screens/detalle_visita.dart';
 import 'package:neivor_tecnico/screens/widget/formularios/custom_appbar.dart';
 import 'package:neivor_tecnico/screens/widget/formularios/form_input.dart';
 
@@ -34,6 +35,19 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
     'Intrucciones al personal',
   ];
 
+  Map<String, dynamic> resForm = {};
+
+  setValue() {
+    resForm = {
+      'name': formNombre.text,
+      'celular': formCelular.text,
+      'isVarios': _visitaVariosDias,
+      'dias': formdias.text,
+      'instrucciones': formInstrucciones.text
+    };
+    setState(() {});
+  }
+
   @override
   void initState() {
     formControl = [
@@ -58,7 +72,7 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
-                padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 child: Text(
                   'Detalle de la visita',
                   style: TextStyle(
@@ -132,7 +146,7 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
               _CustomListTile(
                   formItem: appFormItems[4], formControl: formControl[4]),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 25),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -141,11 +155,15 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
                         minimumSize: const Size(350, 40),
                         backgroundColor: Colors.deepPurple),
                     onPressed: () {
-                      context.push('/detalle_invitados');
-
                       _formKey.currentState?.validate();
-                      print(
-                          '${formNombre.text},${formCelular.text},${_visitaVariosDias},${formdias.text},${formInstrucciones.text},');
+                      setValue();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetalleVisita(
+                              resForm: resForm,
+                            ),
+                          ));
                     },
                     child: const Text('continuar')),
               )

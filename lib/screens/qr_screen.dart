@@ -11,15 +11,25 @@ class QrScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: SizedBox(),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.pop();
+              },
+              icon: const Icon(
+                Icons.close,
+                color: Colors.black,
+              )),
+        ],
+      ),
       body: Center(
         child: Column(
           children: [
             const Padding(padding: EdgeInsets.only(bottom: 60)),
-            IconButton(
-                onPressed: () {
-                  context.pop();
-                },
-                icon: const Icon(Icons.close)),
             Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
@@ -103,7 +113,8 @@ class QrScreen extends StatelessWidget {
                   backgroundColor: Colors.deepPurple[400]),
               child: const Text('whatsapp'),
               onPressed: () {
-                context.push('');
+                launchUrl(Uri.parse('https://wa.me/1132368155'),
+                    mode: LaunchMode.externalApplication);
               },
             )
           ],
