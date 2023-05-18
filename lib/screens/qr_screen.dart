@@ -5,8 +5,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class QrScreen extends StatelessWidget {
   static const String name = 'QrScreen';
+  final Map<String, dynamic>? resForm;
 
-  const QrScreen({super.key});
+  const QrScreen({super.key, this.resForm});
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +47,8 @@ class QrScreen extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const Text(
-                          'Alicia Gonzalez',
+                        Text(
+                          '${resForm?["name"]}',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -67,20 +68,20 @@ class QrScreen extends StatelessWidget {
                         Text('Francisco javier Clavijero 51,CDmx,mexico'),
                         Container(
                           child: QrImageView(
-                            data: '1234567890',
+                            data: '${resForm}',
                             version: QrVersions.auto,
                             size: 200.0,
                           ),
                         ),
-                        const Column(
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Entrada:',
+                            Text('Entrada:${resForm?["dias"]}',
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w500,
                                 )),
-                            Text('Expira:',
+                            Text('Expira:${resForm?["dias"]}',
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w500,
@@ -113,7 +114,7 @@ class QrScreen extends StatelessWidget {
                   backgroundColor: Colors.deepPurple[400]),
               child: const Text('whatsapp'),
               onPressed: () {
-                launchUrl(Uri.parse('https://wa.me/1132368155'),
+                launchUrl(Uri.parse('https://wa.me/${resForm?["celular"]}'),
                     mode: LaunchMode.externalApplication);
               },
             )
@@ -123,13 +124,3 @@ class QrScreen extends StatelessWidget {
     );
   }
 }
-
-
-// class _whatsapp extends StatelessWidget {
-//   const _whatsapp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }

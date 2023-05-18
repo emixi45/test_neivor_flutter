@@ -16,6 +16,7 @@ class FormInput extends StatelessWidget {
     this.hint,
     this.type,
     required this.controller,
+    String? hintText,
   });
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,8 @@ class FormInput extends StatelessWidget {
         if (value == null) return "error";
         if (value.isEmpty) return "error";
         if (value.trim().isEmpty) return "error";
+
+        return null;
       },
     );
   }

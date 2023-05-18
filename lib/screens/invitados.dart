@@ -61,6 +61,7 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
   }
 
   late bool _visitaVariosDias = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +77,7 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
                 child: Text(
                   'Detalle de la visita',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -115,7 +116,7 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
                     const Text(
                       'Visita de varios dias',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -196,7 +197,7 @@ class _CustomListTile extends StatelessWidget {
             formItem,
             style: const TextStyle(
               fontWeight: FontWeight.w600,
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
           Padding(
