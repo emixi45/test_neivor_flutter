@@ -146,7 +146,7 @@ class VisitDetail extends StatelessWidget {
                       children: [
                         Text('Dia de entrada',
                             style: TextStyle(fontWeight: FontWeight.w500)),
-                        Text('${resForm?["dias"]}',
+                        Text('${resForm?["Visita_varios_dias"]}',
                             style: TextStyle(fontWeight: FontWeight.w300)),
                       ],
                     ),

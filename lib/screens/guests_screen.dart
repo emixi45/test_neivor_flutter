@@ -40,7 +40,7 @@ class _InvitadosScreenState extends State<GuestsScreen> {
       'celular': formCel.text,
       'isVarios': _visitMoreDays ? 'visita especial' : 'visita comun',
       'dias': formdays.text,
-      'Visita varios dias': formMoreDays.text,
+      'Visita_varios_dias': formMoreDays.text,
       'instrucciones': formInstruccion.text
     };
     setState(() {});

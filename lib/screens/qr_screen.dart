@@ -80,12 +80,12 @@ class QrScreen extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Entrada:${resForm?["dias"]}',
+                              Text('Entrada:${resForm?["Visita_varios_dias"]}',
                                   style: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w500,
                                   )),
-                              Text('Expira:${resForm?["dias"]}',
+                              Text('Expira:${resForm?["Visita_varios_dias"]}',
                                   style: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w500,
