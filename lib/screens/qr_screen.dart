@@ -107,24 +107,29 @@ class QrScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          ElevatedButton(
-                            onPressed: () async {
-                              Uint8List? capturedImage =
-                                  await controller.capture();
-
-                              await Share.file(
-                                'Captura de pantalla',
-                                'captura.png',
-                                capturedImage as List<int>,
-                                'image/png',
-                                text: '¡Qr!',
-                              );
-                            },
-                            child: Text('Compartir en WhatsApp'),
-                          )
                         ],
                       ))),
             ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  minimumSize: const Size(350, 40),
+                  backgroundColor: Colors.deepPurple),
+              onPressed: () async {
+                Uint8List? capturedImage = await controller.capture();
+
+                await Share.file(
+                  'Captura de pantalla',
+                  'captura.png',
+                  capturedImage as List<int>,
+                  'image/png',
+                  text: '¡Qr!',
+                );
+              },
+              child: Text('Compartir en WhatsApp'),
+            )
           ],
         ),
       ),

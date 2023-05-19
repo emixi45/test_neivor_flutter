@@ -34,22 +34,21 @@ class VisitDetail extends StatelessWidget {
                 ],
               ),
               Padding(padding: EdgeInsets.symmetric(vertical: 20)),
-              Card(
-                child: Container(
-                  margin: EdgeInsets.only(left: 10),
-                  width: 350,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Visita',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
+              Container(
+                decoration: BoxDecoration(color: Colors.deepPurple[200]),
+                margin: EdgeInsets.only(left: 10),
+                width: 350,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Visita',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -84,23 +83,22 @@ class VisitDetail extends StatelessWidget {
                   ],
                 ),
               ),
-              Card(
-                child: Container(
-                  margin: const EdgeInsets.only(left: 10),
-                  width: 350,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Detalle',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
+              Container(
+                decoration: BoxDecoration(color: Colors.deepPurple[200]),
+                margin: const EdgeInsets.only(left: 10),
+                width: 350,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Detalle',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
                       ),
-                      Icon(Icons.edit)
-                    ],
-                  ),
+                    ),
+                    Icon(Icons.edit)
+                  ],
                 ),
               ),
               Padding(
@@ -174,7 +172,7 @@ class VisitDetail extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 20, top: 20),
+                margin: const EdgeInsets.only(left: 15, top: 20),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
