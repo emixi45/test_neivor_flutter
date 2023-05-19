@@ -7,15 +7,15 @@ final appRouter = GoRouter(routes: [
       name: HomeScreen.name,
       builder: (context, state) => const HomeScreen()),
   GoRoute(
-      path: '/invitados',
-      name: InvitadosScreen.name,
-      builder: (context, state) => const InvitadosScreen()),
-  GoRoute(
-      path: '/detalle_invitados',
-      name: DetalleVisita.name,
-      builder: (context, state) => const DetalleVisita()),
+      path: '/guests_screen',
+      name: GuestsScreen.name,
+      builder: (context, state) => const GuestsScreen()),
   GoRoute(
       path: '/QrScreen',
       name: QrScreen.name,
       builder: (context, state) => const QrScreen()),
+  GoRoute(
+      path: '/visit_detail',
+      name: VisitDetail.name,
+      builder: (context, state) => const VisitDetail()),
 ]);

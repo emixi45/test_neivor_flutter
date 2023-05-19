@@ -1,20 +1,18 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:neivor_tecnico/screens/detalle_visita.dart';
+import 'package:neivor_tecnico/screens/screens.dart';
 import 'package:neivor_tecnico/screens/widget/formularios/custom_appbar.dart';
-import 'package:neivor_tecnico/screens/widget/formularios/form_input.dart';
 
-class InvitadosScreen extends StatefulWidget {
-  static const String name = 'invitados_screen';
+class GuestsScreen extends StatefulWidget {
+  static const String name = 'guests_screen';
 
-  const InvitadosScreen({super.key});
+  const GuestsScreen({super.key});
 
   @override
-  State<InvitadosScreen> createState() => _InvitadosScreenState();
+  State<GuestsScreen> createState() => _InvitadosScreenState();
 }
 
-class _InvitadosScreenState extends State<InvitadosScreen> {
+class _InvitadosScreenState extends State<GuestsScreen> {
   TextEditingController formNombre = TextEditingController();
 
   TextEditingController formCelular = TextEditingController();
@@ -41,7 +39,7 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
     resForm = {
       'name': formNombre.text,
       'celular': formCelular.text,
-      'isVarios': _visitaVariosDias,
+      'isVarios': _visitaVariosDias ? 'visita especial' : 'visita comun',
       'dias': formdias.text,
       'instrucciones': formInstrucciones.text
     };
@@ -122,9 +120,9 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
                     ),
                     Switch(
                       value: _visitaVariosDias,
-                      onChanged: (bool valueIn) {
+                      onChanged: (bool value) {
                         setState(() {
-                          _visitaVariosDias = valueIn;
+                          _visitaVariosDias = value;
                         });
                       },
                     ),
@@ -161,7 +159,7 @@ class _InvitadosScreenState extends State<InvitadosScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DetalleVisita(
+                            builder: (context) => VisitDetail(
                               resForm: resForm,
                             ),
                           ));

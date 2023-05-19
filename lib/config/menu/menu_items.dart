@@ -19,7 +19,7 @@ const appMenuItems = <MenuItem>[
     icon: Icons.person_outline,
     title: 'Acceso invitado personal',
     subtitle: 'Registra a tus amigos familia o conocidos',
-    link: '/invitados',
+    link: '/guests_screen',
   ),
   MenuItem(
     icon: Icons.how_to_vote_outlined,

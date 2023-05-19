@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:neivor_tecnico/screens/screens.dart';
 import 'package:neivor_tecnico/screens/widget/formularios/custom_appbar.dart';
 
-class DetalleVisita extends StatelessWidget {
-  static const String name = 'detalle_visita';
+class VisitDetail extends StatelessWidget {
+  static const String name = 'visit_detail';
 
   final Map<String, dynamic>? resForm;
 
-  const DetalleVisita({super.key, this.resForm});
+  const VisitDetail({super.key, this.resForm});
+  String tipoVisita(bool isVarios) {
+    if (isVarios == true) {
+      return 'Visita Especial';
+    } else {
+      return 'Visita Normal';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
