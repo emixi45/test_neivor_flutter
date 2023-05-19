@@ -9,13 +9,6 @@ class VisitDetail extends StatelessWidget {
   final Map<String, dynamic>? resForm;
 
   const VisitDetail({super.key, this.resForm});
-  String tipoVisita(bool isVarios) {
-    if (isVarios == true) {
-      return 'Visita Especial';
-    } else {
-      return 'Visita Normal';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

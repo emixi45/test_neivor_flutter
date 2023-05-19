@@ -13,7 +13,7 @@ final appRouter = GoRouter(routes: [
   GoRoute(
       path: '/QrScreen',
       name: QrScreen.name,
-      builder: (context, state) => const QrScreen()),
+      builder: (context, state) => QrScreen()),
   GoRoute(
       path: '/visit_detail',
       name: VisitDetail.name,

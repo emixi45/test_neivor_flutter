@@ -13,15 +13,14 @@ class GuestsScreen extends StatefulWidget {
 }
 
 class _InvitadosScreenState extends State<GuestsScreen> {
-  TextEditingController formNombre = TextEditingController();
+  TextEditingController formName = TextEditingController();
 
-  TextEditingController formCelular = TextEditingController();
+  TextEditingController formCel = TextEditingController();
 
-  TextEditingController formVisita = TextEditingController();
+  TextEditingController formInstruccion = TextEditingController();
+  TextEditingController formMoreDays = TextEditingController();
 
-  TextEditingController formInstrucciones = TextEditingController();
-
-  TextEditingController formdias = TextEditingController();
+  TextEditingController formdays = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   List formControl = [];
@@ -37,28 +36,23 @@ class _InvitadosScreenState extends State<GuestsScreen> {
 
   setValue() {
     resForm = {
-      'name': formNombre.text,
-      'celular': formCelular.text,
-      'isVarios': _visitaVariosDias ? 'visita especial' : 'visita comun',
-      'dias': formdias.text,
-      'instrucciones': formInstrucciones.text
+      'name': formName.text,
+      'celular': formCel.text,
+      'isVarios': _visitMoreDays ? 'visita especial' : 'visita comun',
+      'dias': formdays.text,
+      'Visita varios dias': formMoreDays.text,
+      'instrucciones': formInstruccion.text
     };
     setState(() {});
   }
 
   @override
   void initState() {
-    formControl = [
-      formNombre,
-      formCelular,
-      formVisita,
-      formdias,
-      formInstrucciones
-    ];
+    formControl = [formName, formCel, formdays, formMoreDays, formInstruccion];
     super.initState();
   }
 
-  late bool _visitaVariosDias = false;
+  late bool _visitMoreDays = false;
 
   @override
   Widget build(BuildContext context) {
@@ -119,10 +113,10 @@ class _InvitadosScreenState extends State<GuestsScreen> {
                       ),
                     ),
                     Switch(
-                      value: _visitaVariosDias,
+                      value: _visitMoreDays,
                       onChanged: (bool value) {
                         setState(() {
-                          _visitaVariosDias = value;
+                          _visitMoreDays = value;
                         });
                       },
                     ),
