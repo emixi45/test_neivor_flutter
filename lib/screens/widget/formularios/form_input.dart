@@ -7,6 +7,7 @@ class FormInput extends StatelessWidget {
   final Function(String?)? onChanged;
   final String? Function(String?)? validator;
   final TextEditingController controller;
+  final VoidCallback? ontap;
 
   const FormInput({
     super.key,
@@ -15,8 +16,9 @@ class FormInput extends StatelessWidget {
     this.label,
     this.hint,
     this.type,
-    required this.controller,
     String? hintText,
+    this.ontap,
+    required this.controller,
   });
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,8 @@ class FormInput extends StatelessWidget {
       ),
       onChanged: onChanged,
       validator: (value) {
-        if (value == null) return "error";
-        if (value.isEmpty) return "error";
-        if (value.trim().isEmpty) return "error";
+        if (value == null || value.isEmpty) return 'Este campo es obligatorio';
+        if (value.trim().isEmpty) return 'Este campo no puede estar vacío';
 
         return null;
       },

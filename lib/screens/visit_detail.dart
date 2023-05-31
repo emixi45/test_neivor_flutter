@@ -8,12 +8,15 @@ class VisitDetail extends StatelessWidget {
 
   final Map<String, dynamic>? resForm;
 
-  const VisitDetail({super.key, this.resForm});
+  const VisitDetail({
+    super.key,
+    this.resForm,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(),
+      appBar: const CustomAppbar(),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(left: 10),

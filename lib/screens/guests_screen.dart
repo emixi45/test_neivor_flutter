@@ -1,40 +1,39 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+
 import 'package:neivor_tecnico/screens/screens.dart';
 import 'package:neivor_tecnico/screens/widget/formularios/custom_appbar.dart';
 
 class GuestsScreen extends StatefulWidget {
   static const String name = 'guests_screen';
 
-  const GuestsScreen({super.key});
+  const GuestsScreen({Key? key}) : super(key: key);
 
   @override
-  State<GuestsScreen> createState() => _InvitadosScreenState();
+  _GuestsScreenState createState() => _GuestsScreenState();
 }
 
-class _InvitadosScreenState extends State<GuestsScreen> {
+class _GuestsScreenState extends State<GuestsScreen> {
   TextEditingController formName = TextEditingController();
-
   TextEditingController formCel = TextEditingController();
-
   TextEditingController formInstruccion = TextEditingController();
   TextEditingController formMoreDays = TextEditingController();
-
   TextEditingController formdays = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  List formControl = [];
+  List<TextEditingController> formControl = [];
   static const List<String> appFormItems = [
     'Nombre completo',
     'Celular',
     'Visita de varios dias',
     'Dia de la visita',
-    'Intrucciones al personal',
+    'Instrucciones al personal',
   ];
 
   Map<String, dynamic> resForm = {};
 
-  setValue() {
+  void setValue() {
     resForm = {
       'name': formName.text,
       'celular': formCel.text,
@@ -52,12 +51,12 @@ class _InvitadosScreenState extends State<GuestsScreen> {
     super.initState();
   }
 
-  late bool _visitMoreDays = false;
+  bool _visitMoreDays = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppbar(),
+      appBar: CustomAppbar(),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -83,12 +82,13 @@ class _InvitadosScreenState extends State<GuestsScreen> {
                 child: Row(
                   children: [
                     SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: const CountryCodePicker(
-                          initialSelection: 'Ar',
-                          showCountryOnly: false,
-                          showOnlyCountryWhenClosed: false,
-                        )),
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: const CountryCodePicker(
+                        initialSelection: 'Ar',
+                        showCountryOnly: false,
+                        showOnlyCountryWhenClosed: false,
+                      ),
+                    ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: _CustomListTile(
@@ -124,7 +124,9 @@ class _InvitadosScreenState extends State<GuestsScreen> {
                 ),
               ),
               _CustomListTile(
-                  formItem: appFormItems[3], formControl: formControl[3]),
+                formItem: appFormItems[3],
+                formControl: formControl[3],
+              ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -137,29 +139,35 @@ class _InvitadosScreenState extends State<GuestsScreen> {
                 ],
               ),
               _CustomListTile(
-                  formItem: appFormItems[4], formControl: formControl[4]),
+                formItem: appFormItems[4],
+                formControl: formControl[4],
+              ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        minimumSize: const Size(350, 40),
-                        backgroundColor: Colors.deepPurple),
-                    onPressed: () {
-                      _formKey.currentState?.validate();
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    minimumSize: const Size(350, 40),
+                    backgroundColor: Colors.deepPurple,
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
                       setValue();
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => VisitDetail(
-                              resForm: resForm,
-                            ),
-                          ));
-                    },
-                    child: const Text('continuar')),
-              )
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VisitDetail(
+                            resForm: resForm,
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text('continuar'),
+                ),
+              ),
             ],
           ),
         ),
@@ -173,11 +181,14 @@ class _CustomListTile extends StatelessWidget {
     required this.formItem,
     required this.formControl,
     this.type,
+    this.onTap,
   });
 
   final String formItem;
   final TextEditingController formControl;
   final TextInputType? type;
+  final void Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -194,19 +205,45 @@ class _CustomListTile extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: FormInput(
-              controller: formControl,
-              hint: formItem,
-              type: type,
-            ),
+            child: formItem == 'Dia de la visita'
+                ? DateTimePicker(
+                    controller: formControl,
+                    type: DateTimePickerType.date,
+                    dateMask: 'dd-mm-yyyy',
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime.now().add(const Duration(days: 365)),
+                    decoration: InputDecoration(
+                      hintText: formItem,
+                      border: const OutlineInputBorder(),
+                    ),
+                    onChanged: (value) {},
+                  )
+                : formItem == 'Instrucciones al personal'
+                    ? TextFormField(
+                        controller: formControl,
+                        keyboardType: type,
+                        decoration: InputDecoration(
+                          hintText: formItem,
+                          border: const OutlineInputBorder(),
+                        ),
+                      )
+                    : TextFormField(
+                        controller: formControl,
+                        keyboardType: type,
+                        decoration: InputDecoration(
+                          hintText: formItem,
+                          border: const OutlineInputBorder(),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Este campo es obligatorio';
+                          }
+                          return null;
+                        },
+                      ),
           ),
         ],
       ),
     );
   }
 }
-
-// 
-        
-        
-    
