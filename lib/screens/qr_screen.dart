@@ -16,7 +16,7 @@ class QrScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: SizedBox(),
+        leading: const SizedBox(),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
@@ -37,6 +37,7 @@ class QrScreen extends StatelessWidget {
             Screenshot(
               controller: controller,
               child: Card(
+                  color: Colors.blueGrey[200],
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   child: SizedBox(
@@ -44,22 +45,28 @@ class QrScreen extends StatelessWidget {
                       height: 500,
                       child: Column(
                         children: [
-                          const Text(
-                            'Neivor',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            '${resForm?["name"]}',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
+                          const Padding(
+                            padding: EdgeInsets.only(top: 30),
+                            child: Text(
+                              'Neivor',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.only(top: 20),
+                            child: Text(
+                              '${resForm?["name"]}',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -69,10 +76,12 @@ class QrScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Text('Francisco javier Clavijero 51,CDmx,mexico'),
-                          Container(
+                          const Text(
+                              'Francisco javier Clavijero 51,CDmx,mexico'),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20),
                             child: QrImageView(
-                              data: '${resForm}',
+                              data: '$resForm',
                               version: QrVersions.auto,
                               size: 200.0,
                             ),
@@ -81,21 +90,21 @@ class QrScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Entrada:${resForm?["Visita_varios_dias"]}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w500,
                                   )),
                               Text('Expira:${resForm?["Visita_varios_dias"]}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w500,
                                   )),
-                              Text('Queres saber mas sobre neivor?',
+                              const Text('Queres saber mas sobre neivor?',
                                   style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w300,
                                   )),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 10),
                                 child: Text('www.Neivor.com',
@@ -128,7 +137,7 @@ class QrScreen extends StatelessWidget {
                   text: '¡Qr!',
                 );
               },
-              child: Text('Compartir en WhatsApp'),
+              child: const Text('Compartir en WhatsApp'),
             )
           ],
         ),
@@ -136,29 +145,3 @@ class QrScreen extends StatelessWidget {
     );
   }
 }
-  
-// Future saveAndShare(Uint8List bytes) async {
-//     final directory = await getApplicationDocumentsDirectory();
-//     final image = File('${directory.path}/flutter.png');
-//     image.writeAsBytesSync(bytes);
-//     final text = 'enviar por whatsapp';
-//     await Share.files(image);
-//   }
-
-
-
-
-// launchUrl(Uri.parse('https://wa.me/${resForm?["celular"]}'),
-//                     mode: LaunchMode.externalApplication);
-
-// Future<String> saveImage(Uint8List bytes) async {
-  //   await [Permission.storage].request();
-  //   final time = DateTime.now()
-  //       .toIso8601String()
-  //       .replaceAll('.', '-')
-  //       .replaceAll(':', '-');
-
-  //   final name = 'screenshot_$time';
-  //   final result = await ImageGallerySaver.saveImage(bytes, name: name);
-  //   return result['filePath'];
-  // 
